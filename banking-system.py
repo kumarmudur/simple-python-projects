@@ -17,7 +17,10 @@ while True:
         balance += amount
     elif choice == 3:
         amount = int(input("Enter the amount to withdraw: "))
-        balance -= amount
+        if balance >= amount:
+            balance -= amount
+        else:
+            print("Insufficient funds")
     elif choice == 4:
         print("Thank you for using ur banking system")
         break
