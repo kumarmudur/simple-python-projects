@@ -48,3 +48,19 @@ class Appointment:
 
     def __str__(self):
         return f"Appointment: {self.appointment_time.strftime('%Y-%m-%d %H:%M')} - {self.doctor} with {self.patient}"
+
+
+class Hospital:
+    def __init__(self, name):
+        self.name = name
+        self.doctors = {}
+        self.patients = {}
+        self.appointments = {}
+
+    def add_doctor(self, doctor):
+        self.doctors[doctor.doctor_id] = doctor
+
+    def add_patient(self, patient):
+        self.patients[patient.patient_id] = patient
+
+
