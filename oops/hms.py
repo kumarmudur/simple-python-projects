@@ -26,7 +26,7 @@ class Doctor:
             return True
         return False
 
-    def doctor_info(self):
+    def __str__(self):
         return f"Dr. {self.name} {self.specialty}"
 
 
@@ -36,5 +36,15 @@ class Patient:
         self.patient = patient
         self.appointment_time = appointment_time
 
-    def patient_info(self):
+    def __str__(self):
+        return f"Appointment: {self.appointment_time.strftime('%Y-%m-%d %H:%M')} - {self.doctor} with {self.patient}"
+
+
+class Appointment:
+    def __init__(self, doctor, patient, appointment_time):
+        self.doctor = doctor
+        self.patient = patient
+        self.appointment_time = appointment_time
+
+    def __str__(self):
         return f"Appointment: {self.appointment_time.strftime('%Y-%m-%d %H:%M')} - {self.doctor} with {self.patient}"
