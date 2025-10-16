@@ -30,3 +30,11 @@ class Doctor:
         return f"Dr. {self.name} {self.specialty}"
 
 
+class Patient:
+    def __init__(self, doctor, patient, appointment_time):
+        self.doctor = doctor
+        self.patient = patient
+        self.appointment_time = appointment_time
+
+    def patient_info(self):
+        return f"Appointment: {self.appointment_time.strftime('%Y-%m-%d %H:%M')} - {self.doctor} with {self.patient}"
