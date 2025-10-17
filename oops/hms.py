@@ -63,4 +63,10 @@ class Hospital:
     def add_patient(self, patient):
         self.patients[patient.patient_id] = patient
 
+    def book_appointment(self, doctor_id, patient_id, appointment_time):
+        """Book an appointment if doctor is available."""
+        doctor = self.doctors.get(doctor_id)
+        patient = self.patients.get(patient_id)
+
+
 
