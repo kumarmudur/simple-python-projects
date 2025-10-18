@@ -31,3 +31,8 @@ class InvoicePrinter:
 # Each class has one job:
 # Invoice: calculates data
 # InvoicePrinter: handles display
+
+# 💼 Real-World Project Example
+# InvoiceCalculator (handles tax, discounts)
+# InvoicePrinter (handles output)
+# InvoiceRepository (handles database storage)
