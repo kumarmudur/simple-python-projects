@@ -31,13 +31,13 @@ class Doctor:
 
 
 class Patient:
-    def __init__(self, doctor, patient, appointment_time):
-        self.doctor = doctor
-        self.patient = patient
-        self.appointment_time = appointment_time
+    def __init__(self, patient_id, name, ailment):
+        self.patient_id = patient_id
+        self.name = name
+        self.ailment = ailment
 
     def __str__(self):
-        return f"Appointment: {self.appointment_time.strftime('%Y-%m-%d %H:%M')} - {self.doctor} with {self.patient}"
+        return f"{self.name} (Ailment: {self.ailment}"
 
 
 class Appointment:
@@ -68,5 +68,54 @@ class Hospital:
         doctor = self.doctors.get(doctor_id)
         patient = self.patients.get(patient_id)
 
+        if not doctor or not patient:
+            print("Invalid doctor or patient ID.")
+            return
+
+        if doctor.is_available(appointment_time):
+            doctor.add_appointment(appointment_time)
+            appointment = Appointment(doctor, patient, appointment_time)
+            self.appointments.append(appointment)
+            print(f"✅ Appointment booked successfully:\n{appointment}")
+        else:
+            print(f"❌ Doctor {doctor.name} is not available at {appointment_time}.")
+
+    def view_doctor_schedule(self, doctor_id):
+        doctor = self.doctors.get(doctor_id)
+        if not doctor:
+            print("Doctor not found.")
+            return
+
+        print(f"\n📅 Schedule for {doctor.name}:")
+        if not doctor.schedule:
+            print("No appointments scheduled.")
+        else:
+            for time in sorted(doctor.schedule):
+                print(f" - {time.strftime('%Y-%m-%d %H:%M')}")
+
+    def list_appointments(self):
+        print(f"\nAll Appointments at {self.name}:")
+        if not self.appointments:
+            print("No appointments booked yet.")
+        else:
+            for appointment in self.appointments:
+                print(appointment)
 
 
+# Example usage
+if __name__ == "__main__":
+    hospital = Hospital("CityCare Hospital")
+
+    print(hospital.name)
+
+    # Add doctors
+    d1 = Doctor(1, "Alice Smith", "Cardiology")
+    d2 = Doctor(2, "Bob Johnson", "Neurology")
+    hospital.add_doctor(d1)
+    hospital.add_doctor(d2)
+
+    # App patients
+    p1 = Patient(101, "John Doe", "Chest Pain")
+    p2 = Patient(102, "Jane Roe", "Headache")
+    hospital.add_patient(p1)
+    hospital.add_patient(p2)
