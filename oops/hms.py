@@ -119,3 +119,15 @@ if __name__ == "__main__":
     p2 = Patient(102, "Jane Roe", "Headache")
     hospital.add_patient(p1)
     hospital.add_patient(p2)
+
+    # Book appointments
+    appt_time1 = datetime(2025, 10, 16, 10, 0)
+    appt_time2 = datetime(2025, 10, 16, 10, 0)  # same time (to test double booking)
+    appt_time3 = datetime(2025, 10, 16, 11, 0)
+
+    # View schedules
+    hospital.view_doctor_schedule(1)
+    hospital.view_doctor_schedule(2)
+
+    # List all appointments
+    hospital.list_appointments()
