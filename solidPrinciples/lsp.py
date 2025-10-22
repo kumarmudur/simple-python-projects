@@ -29,4 +29,8 @@ class Penguin1(Bird):
 
 # ➡ Now, substituting subclasses doesn’t break behavior.
 
+# 💼 Real-World Project Example
+# Game Simulation:
+# Separate Car and Boat from a Vehicle base class, but don’t force all to implement drive().
+# Instead, define capability-specific subclasses like LandVehicle and WaterVehicle.
 
