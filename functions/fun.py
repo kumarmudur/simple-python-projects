@@ -8,4 +8,7 @@ def double(x):
 
 result = map(double, nums)
 
+res = map(lambda x: x*2, nums)
+
 print(list(result))
+print(list(res))
